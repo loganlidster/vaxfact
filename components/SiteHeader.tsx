@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const VACCINE_NAV = [
   {
@@ -38,7 +41,29 @@ const VACCINE_NAV = [
   },
 ];
 
-export default function SiteHeader() {
+interface SiteHeaderProps {
+  // Optional interactive callbacks for the home page SPA views
+  onScheduleClick?: () => void;
+  onOutbreakClick?: () => void;
+  onTimelineClick?: () => void;
+  onScenarioClick?: () => void;
+  scenarioActive?: boolean;
+  selectedCount?: number;
+  currentView?: string;
+}
+
+export default function SiteHeader({
+  onScheduleClick,
+  onOutbreakClick,
+  onTimelineClick,
+  onScenarioClick,
+  scenarioActive,
+  selectedCount = 0,
+  currentView,
+}: SiteHeaderProps) {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
     <header
       style={{
@@ -52,28 +77,30 @@ export default function SiteHeader() {
     >
       <div
         style={{
-          maxWidth: 1200,
+          maxWidth: 1280,
           margin: "0 auto",
           padding: "0 24px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           height: 60,
+          gap: 16,
         }}
       >
-        {/* Logo */}
+        {/* ── Logo ── */}
         <Link
           href="/"
           style={{
             fontFamily: "var(--font-serif)",
-            fontSize: 22,
+            fontSize: 21,
             fontWeight: 700,
             color: "#f8fafc",
             textDecoration: "none",
             letterSpacing: "-0.02em",
             display: "flex",
             alignItems: "center",
-            gap: 8,
+            gap: 6,
+            flexShrink: 0,
           }}
         >
           <span
@@ -86,25 +113,26 @@ export default function SiteHeader() {
           >
             VaxFact
           </span>
-          <span style={{ color: "#64748b", fontWeight: 400, fontSize: 16 }}>
+          <span style={{ color: "#334155", fontWeight: 400, fontSize: 15 }}>
             .net
           </span>
         </Link>
 
-        {/* Desktop Nav */}
+        {/* ── Nav ── */}
         <nav
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 4,
+            gap: 2,
+            flex: 1,
           }}
         >
           {/* Vaccines Dropdown */}
-          <div className="nav-dropdown-wrapper">
-            <Link href="/vaccines" className="nav-link nav-link-vaccines">
+          <div className="vf-nav-dropdown-wrapper">
+            <Link href="/vaccines" className="vf-nav-link">
               Vaccines ▾
             </Link>
-            <div className="nav-dropdown">
+            <div className="vf-nav-dropdown">
               <div
                 style={{
                   display: "grid",
@@ -122,7 +150,7 @@ export default function SiteHeader() {
                         fontWeight: 600,
                         textTransform: "uppercase",
                         letterSpacing: "0.08em",
-                        color: "#64748b",
+                        color: "#475569",
                         marginBottom: 10,
                         paddingBottom: 6,
                         borderBottom: "1px solid #1e293b",
@@ -130,20 +158,18 @@ export default function SiteHeader() {
                     >
                       {group.category}
                     </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 2,
+                      }}
+                    >
                       {group.items.map((v) => (
                         <Link
                           key={v.id}
                           href={`/vaccines/${v.id}`}
-                          style={{
-                            color: "#cbd5e1",
-                            textDecoration: "none",
-                            fontSize: 14,
-                            padding: "4px 8px",
-                            borderRadius: 4,
-                            transition: "all 0.15s",
-                          }}
-                          className="dropdown-vaccine-link"
+                          className="vf-dropdown-link"
                         >
                           {v.name}
                         </Link>
@@ -161,7 +187,7 @@ export default function SiteHeader() {
                   justifyContent: "space-between",
                 }}
               >
-                <span style={{ color: "#64748b", fontSize: 13 }}>
+                <span style={{ color: "#475569", fontSize: 13 }}>
                   20 vaccines with full evidence profiles
                 </span>
                 <Link
@@ -179,85 +205,205 @@ export default function SiteHeader() {
             </div>
           </div>
 
-          <Link href="/schedule" className="nav-link">
-            Schedule
-          </Link>
-          <Link href="/timeline" className="nav-link">
-            Timeline
-          </Link>
-          <Link href="/outbreak-map" className="nav-link">
-            Outbreak Map
-          </Link>
-          <Link href="/faq" className="nav-link">
+          {/* Schedule — link or button depending on page */}
+          {onScheduleClick ? (
+            <button
+              onClick={onScheduleClick}
+              className={`vf-nav-link vf-nav-btn ${currentView === "schedule" ? "vf-nav-active" : ""}`}
+            >
+              Schedule
+            </button>
+          ) : (
+            <Link
+              href="/schedule"
+              className={`vf-nav-link ${pathname === "/schedule" ? "vf-nav-active" : ""}`}
+            >
+              Schedule
+            </Link>
+          )}
+
+          {/* Timeline */}
+          {onTimelineClick ? (
+            <button
+              onClick={onTimelineClick}
+              className={`vf-nav-link vf-nav-btn ${currentView === "timeline" ? "vf-nav-active" : ""}`}
+            >
+              Timeline
+            </button>
+          ) : (
+            <Link
+              href="/timeline"
+              className={`vf-nav-link ${pathname === "/timeline" ? "vf-nav-active" : ""}`}
+            >
+              Timeline
+            </Link>
+          )}
+
+          {/* Outbreak Map */}
+          {onOutbreakClick ? (
+            <button
+              onClick={onOutbreakClick}
+              className={`vf-nav-link vf-nav-btn ${currentView === "outbreak" ? "vf-nav-active" : ""}`}
+            >
+              Outbreak Map
+            </button>
+          ) : (
+            <Link
+              href="/outbreak-map"
+              className={`vf-nav-link ${pathname === "/outbreak-map" ? "vf-nav-active" : ""}`}
+            >
+              Outbreak Map
+            </Link>
+          )}
+
+          <Link
+            href="/faq"
+            className={`vf-nav-link ${pathname === "/faq" ? "vf-nav-active" : ""}`}
+          >
             FAQ
-          </Link>
-          <Link href="/about" className="nav-link">
-            About
           </Link>
 
           <Link
-            href="/"
-            style={{
-              marginLeft: 8,
-              background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
-              color: "#fff",
-              padding: "8px 18px",
-              borderRadius: 8,
-              fontSize: 13,
-              fontWeight: 600,
-              textDecoration: "none",
-              whiteSpace: "nowrap",
-            }}
+            href="/about"
+            className={`vf-nav-link ${pathname === "/about" ? "vf-nav-active" : ""}`}
           >
-            Score My Vaccines
+            About
           </Link>
         </nav>
+
+        {/* ── Right side actions ── */}
+        <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+          {/* Scenario button (home page only) */}
+          {onScenarioClick && (
+            <button
+              onClick={onScenarioClick}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                background: scenarioActive ? "rgba(59,130,246,0.15)" : "rgba(255,255,255,0.05)",
+                border: `1px solid ${scenarioActive ? "#3b82f6" : "#1e293b"}`,
+                color: scenarioActive ? "#93c5fd" : "#94a3b8",
+                padding: "7px 14px",
+                borderRadius: 8,
+                fontSize: 13,
+                fontWeight: 500,
+                cursor: "pointer",
+                transition: "all 0.15s",
+              }}
+            >
+              ⚙ Your Situation
+              {scenarioActive && (
+                <span
+                  style={{
+                    width: 7,
+                    height: 7,
+                    borderRadius: "50%",
+                    background: "#3b82f6",
+                    display: "inline-block",
+                  }}
+                />
+              )}
+            </button>
+          )}
+
+          {/* Selected vaccines badge (home page) */}
+          {selectedCount > 0 && (
+            <span
+              style={{
+                background: "#1e3a5f",
+                border: "1px solid #1e4a8a",
+                color: "#60a5fa",
+                fontSize: 12,
+                fontWeight: 700,
+                padding: "5px 10px",
+                borderRadius: 8,
+              }}
+            >
+              {selectedCount} selected
+            </span>
+          )}
+
+          {/* Score CTA */}
+          {!isHome && (
+            <Link
+              href="/"
+              style={{
+                background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
+                color: "#fff",
+                padding: "8px 16px",
+                borderRadius: 8,
+                fontSize: 13,
+                fontWeight: 600,
+                textDecoration: "none",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Score My Vaccines
+            </Link>
+          )}
+        </div>
       </div>
 
-      {/* CSS for dropdown behavior */}
       <style>{`
-        .nav-link {
-          color: #94a3b8;
+        .vf-nav-link {
+          color: #64748b;
           text-decoration: none;
           font-size: 14px;
           font-weight: 500;
-          padding: 8px 12px;
+          padding: 7px 11px;
           border-radius: 6px;
           transition: color 0.15s, background 0.15s;
           white-space: nowrap;
+          display: inline-block;
         }
-        .nav-link:hover {
+        .vf-nav-link:hover {
           color: #f1f5f9;
           background: rgba(255,255,255,0.05);
         }
-        .nav-link-vaccines {
-          cursor: pointer;
+        .vf-nav-active {
+          color: #93c5fd !important;
+          background: rgba(59,130,246,0.1) !important;
         }
-        .nav-dropdown-wrapper {
+        .vf-nav-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-family: inherit;
+        }
+        .vf-nav-dropdown-wrapper {
           position: relative;
           display: flex;
           align-items: center;
         }
-        .nav-dropdown {
+        .vf-nav-dropdown {
           display: none;
           position: absolute;
           top: calc(100% + 8px);
-          left: 50%;
-          transform: translateX(-50%);
+          left: 0;
           background: #0f172a;
           border: 1px solid #1e293b;
           border-radius: 12px;
-          box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.6);
           z-index: 200;
           overflow: hidden;
         }
-        .nav-dropdown-wrapper:hover .nav-dropdown,
-        .nav-dropdown-wrapper:focus-within .nav-dropdown {
+        .vf-nav-dropdown-wrapper:hover .vf-nav-dropdown,
+        .vf-nav-dropdown-wrapper:focus-within .vf-nav-dropdown {
           display: block;
         }
-        .dropdown-vaccine-link:hover {
-          color: #f1f5f9 !important;
-          background: rgba(59, 130, 246, 0.1) !important;
+        .vf-dropdown-link {
+          display: block;
+          color: #64748b;
+          text-decoration: none;
+          font-size: 13.5px;
+          padding: 5px 8px;
+          border-radius: 5px;
+          transition: all 0.12s;
+        }
+        .vf-dropdown-link:hover {
+          color: #f1f5f9;
+          background: rgba(59,130,246,0.1);
         }
       `}</style>
     </header>

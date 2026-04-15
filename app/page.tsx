@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { VACCINES, computeScores, DEFAULT_SCENARIO, ScenarioInputs, VaccineData } from "@/lib/vaccineData";
-import Header from "@/components/Header";
+import SiteHeader from "@/components/SiteHeader";
 import HeroSection from "@/components/HeroSection";
 import VaccineGrid from "@/components/VaccineGrid";
 import VaccineDetail from "@/components/VaccineDetail";
@@ -82,16 +82,13 @@ export default function Home() {
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--bg)" }}>
-      <Header
-        onHomeClick={handleBack}
-        showBack={view !== "home"}
-        backLabel={backLabel}
-        selectedCount={selectedForSchedule.length}
+      <SiteHeader
         onScheduleClick={() => navigateTo("schedule")}
         onScenarioClick={() => setShowScenarioDrawer(true)}
         onOutbreakClick={() => navigateTo("outbreak")}
         onTimelineClick={() => navigateTo("timeline")}
         scenarioActive={scenarioActive}
+        selectedCount={selectedForSchedule.length}
         currentView={view}
       />
 
