@@ -132,6 +132,7 @@ export default function AboutPage() {
               { href: "#evidence", label: "Evidence Standards" },
               { href: "#data-sources", label: "Data Sources" },
               { href: "#limitations", label: "Limitations" },
+              { href: "#changelog", label: "Changelog" },
               { href: "#disclaimer", label: "Medical Disclaimer" },
             ].map(({ href, label }) => (
               <a
@@ -318,6 +319,10 @@ export default function AboutPage() {
                 { name: "Cochrane Reviews", url: "https://www.cochranelibrary.com/", desc: "Independent systematic reviews of vaccine evidence" },
                 { name: "PubMed / MEDLINE", url: "https://pubmed.ncbi.nlm.nih.gov/", desc: "Peer-reviewed journal citations for individual vaccine data" },
                 { name: "Brighton Collaboration", url: "https://brightoncollaboration.us/", desc: "Standardized adverse event definitions used in our severity scoring" },
+                { name: "IOM / National Academies Reports", url: "https://www.nationalacademies.org/topics/vaccines", desc: "Independent expert committee reviews of vaccine adverse effects (2012 landmark report and ongoing)" },
+                { name: "European Medicines Agency (EMA)", url: "https://www.ema.europa.eu/en/human-regulatory-overview/public-health-threats/vaccines", desc: "European vaccine approval and safety surveillance data" },
+                { name: "V-safe (CDC Active Surveillance)", url: "https://www.cdc.gov/vaccinesafety/ensuringsafety/monitoring/vsafe/", desc: "Smartphone-based health check-in system for COVID-19 and other vaccine safety monitoring" },
+                { name: "GACVS (WHO Global Advisory Committee)", url: "https://www.who.int/groups/global-advisory-committee-on-vaccine-safety", desc: "WHO's independent body reviewing vaccine safety signals worldwide" },
               ].map((src) => (
                 <div
                   key={src.name}
@@ -377,6 +382,76 @@ export default function AboutPage() {
                   <p style={{ color: "#94a3b8", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
                     {limitation}
                   </p>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          <Section id="changelog" title="📅 Data Updates & Changelog">
+            <p style={{ color: "#94a3b8", fontSize: 15, lineHeight: 1.8, marginBottom: 20 }}>
+              VaxFact.net is updated as new evidence emerges. Major data changes are documented below.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {[
+                {
+                  date: "2025",
+                  title: "Added 4 new vaccines",
+                  detail: "Mpox (JYNNEOS), Cholera (Vaxchora/Shanchol), Japanese Encephalitis (Ixiaro), and Tdap adult booster added with full evidence profiles.",
+                },
+                {
+                  date: "2025",
+                  title: "Compare page launched",
+                  detail: "New side-by-side comparison table with net benefit, effectiveness, risk, and evidence scores for all 24 vaccines.",
+                },
+                {
+                  date: "2025",
+                  title: "Expanded FAQ",
+                  detail: "Added 20+ new questions across 4 new categories: Vaccine Ingredients & Manufacturing, Decision-Making for Parents, Community Immunity, and Monitoring Vaccine Safety.",
+                },
+                {
+                  date: "2025",
+                  title: "Mobile responsiveness",
+                  detail: "Full mobile-responsive redesign: hamburger navigation, responsive grid layouts for all pages, touch-optimized interactions.",
+                },
+                {
+                  date: "2024–2025",
+                  title: "Initial launch",
+                  detail: "VaxFact.net launched with 20 vaccines, personalized benefit-risk calculator, outbreak map, vaccination timeline, and schedule page.",
+                },
+              ].map((entry) => (
+                <div
+                  key={entry.title}
+                  style={{
+                    display: "flex",
+                    gap: 16,
+                    background: "#060e1e",
+                    border: "1px solid #1e293b",
+                    borderRadius: 8,
+                    padding: "14px 16px",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <span style={{
+                    background: "rgba(99,102,241,0.12)",
+                    border: "1px solid rgba(99,102,241,0.25)",
+                    color: "#818cf8",
+                    borderRadius: 6,
+                    padding: "3px 10px",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                  }}>
+                    {entry.date}
+                  </span>
+                  <div>
+                    <div style={{ color: "#f1f5f9", fontSize: 14, fontWeight: 600, marginBottom: 4 }}>
+                      {entry.title}
+                    </div>
+                    <p style={{ color: "#64748b", fontSize: 13, lineHeight: 1.6, margin: 0 }}>
+                      {entry.detail}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>

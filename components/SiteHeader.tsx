@@ -87,6 +87,7 @@ export default function SiteHeader({
       onClick: onOutbreakClick,
       view: "outbreak",
     },
+    { label: "Compare", href: "/compare", onClick: undefined, view: undefined },
     { label: "FAQ", href: "/faq", onClick: undefined, view: undefined },
     { label: "About", href: "/about", onClick: undefined, view: undefined },
   ];

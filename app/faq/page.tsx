@@ -105,6 +105,94 @@ const FAQS = [
       },
     ],
   },
+  {
+    category: "Vaccine Ingredients & Manufacturing",
+    questions: [
+      {
+        q: "What is an adjuvant and why is it in vaccines?",
+        a: "An adjuvant is an ingredient added to some vaccines to boost the immune response, allowing the vaccine to work with a smaller amount of antigen (the disease component). The most common adjuvants are aluminum salts (aluminum hydroxide or aluminum phosphate), which have been used safely in vaccines since the 1930s. The amount of aluminum in vaccines is tiny — typically 125–625 micrograms per dose — far below the amounts humans safely encounter daily from food, water, and air. A breastfed infant ingests more aluminum from breast milk in a month than from their entire vaccine series.",
+      },
+      {
+        q: "Why do some vaccines contain formaldehyde?",
+        a: "Formaldehyde is used during vaccine manufacturing to inactivate (kill) viruses or detoxify toxins, ensuring the vaccine cannot cause disease. The vast majority is removed during purification — residual amounts are typically less than 0.1 mg per dose. To put this in perspective: your body naturally produces and circulates approximately 1.5 mg of formaldehyde per liter of blood as a normal byproduct of metabolism. A newborn has roughly 50–70 times more formaldehyde in their bloodstream at any moment than is contained in any vaccine.",
+      },
+      {
+        q: "What is thimerosal and which vaccines still contain it?",
+        a: "Thimerosal is a mercury-based preservative used to prevent contamination in multi-dose vaccine vials. It contains ethylmercury, which is metabolized and cleared from the body quickly — very different from methylmercury (the environmental toxin in fish) which accumulates. Despite this distinction, thimerosal was removed from all routine childhood vaccines in the US by 2001 as a precautionary measure. Today, only some multi-dose flu vaccines contain thimerosal; thimerosal-free single-dose flu vaccine options are widely available. Dozens of studies have found no association between thimerosal exposure and any neurodevelopmental outcome.",
+      },
+      {
+        q: "Are vaccines tested on animals before human trials?",
+        a: "Yes. Vaccine development follows a rigorous multi-stage process: (1) Exploratory/preclinical stage — lab research and animal testing to identify potential candidates and assess basic safety and immunogenicity; (2) Phase I human trials — small studies (20–80 people) focused on safety and dosing; (3) Phase II trials — hundreds of participants to study immune response, safety, and schedule; (4) Phase III trials — thousands to tens of thousands of participants in randomized controlled trials to evaluate efficacy and detect less common adverse events; (5) Post-market surveillance — ongoing monitoring via systems like VAERS, the Vaccine Safety Datalink, and the Clinical Immunization Safety Assessment network.",
+      },
+      {
+        q: "What does 'mRNA vaccine' mean — does it change my DNA?",
+        a: "No. mRNA (messenger RNA) vaccines like the Pfizer-BioNTech and Moderna COVID-19 vaccines deliver temporary genetic instructions telling your cells how to make a protein from the target pathogen (like the coronavirus spike protein). Your immune system then recognizes this protein as foreign and builds a response. The mRNA never enters the cell nucleus where DNA is stored — it cannot be incorporated into your DNA. mRNA is also extremely fragile and is broken down by your cells within days. This technology, while used clinically for the first time in COVID-19 vaccines, was developed and studied for over 30 years in cancer research and other applications.",
+      },
+    ],
+  },
+  {
+    category: "Vaccine Decision-Making for Parents",
+    questions: [
+      {
+        q: "What should I do if my child missed vaccines on the schedule?",
+        a: "Don't panic — catch-up vaccination is straightforward and effective. The CDC publishes a catch-up schedule that accounts for delayed starts or missed doses. Most vaccines can be given at any age, and spacing rules still apply (minimum intervals between doses). Your child's pediatrician or a public health clinic can assess which vaccines are needed and create a catch-up plan. The key principle is that some protection is always better than none — partial vaccine series still provide meaningful immunity for the doses received, and completing the series restores full protection.",
+      },
+      {
+        q: "My child has allergies — are any vaccines unsafe for them?",
+        a: "Most children with allergies can safely receive all recommended vaccines. The key considerations are: (1) Egg allergy — the flu shot contains trace egg proteins, but current guidance from ACIP is that even children with severe egg allergy can receive the flu vaccine in a standard medical setting without special precautions. (2) Gelatin allergy — some vaccines contain gelatin as a stabilizer; children with confirmed gelatin allergy need a risk-benefit discussion. (3) Latex allergy — some vial stoppers contain latex; latex-free alternatives are available. (4) Any prior anaphylaxis to a vaccine or vaccine ingredient — warrants specialist consultation. A general 'allergy' is not a reason to avoid vaccines; discuss your specific allergy with your provider.",
+      },
+      {
+        q: "Can my baby get too many vaccines at once?",
+        a: "No — the evidence strongly indicates that receiving multiple vaccines at the same visit does not overwhelm or overload a baby's immune system. Infants encounter thousands of antigens (foreign substances) every day through normal exposure to the environment, food, and microorganisms. The total antigens in all vaccines given at a 2-month visit are fewer than the antigens in a single bacterium. Combining vaccines at one visit reduces the number of clinic visits, ensures timely protection during the most vulnerable window, and does not diminish immune response to any individual vaccine.",
+      },
+      {
+        q: "Should I spread out my child's vaccines instead of following the schedule?",
+        a: "Major medical organizations including the American Academy of Pediatrics and the CDC advise against alternative spacing schedules. The recommended schedule is designed to provide protection as early as possible — during the window when infants are most vulnerable to certain diseases (like pertussis, which is most deadly in infants under 3 months). Spreading out vaccines leaves children unprotected against serious diseases for longer periods. There is no evidence that alternative spacing improves outcomes or reduces risks. Each component of the schedule has been carefully timed based on immunological data on when protection is most needed and when the immune system responds best.",
+      },
+      {
+        q: "What is 'informed refusal' and do I have the right to decline vaccines?",
+        a: "In the United States, parents have the legal right to decline vaccines for their children in most states, with the process varying by state law. 'Informed refusal' means declining after fully understanding the benefits, risks, and alternatives — including the risks of the diseases being prevented. Most states allow medical exemptions (for genuine contraindications); many allow religious exemptions; some allow philosophical exemptions. However, exemptions carry real consequences: unvaccinated children face higher personal disease risk, and communities with high exemption rates have experienced outbreaks of measles, pertussis, and other preventable diseases. VaxFact's goal is to support truly informed decisions — including honest information about the risks of vaccine-preventable diseases.",
+      },
+    ],
+  },
+  {
+    category: "Community Immunity & Public Health",
+    questions: [
+      {
+        q: "What is herd immunity and why does it matter for my family?",
+        a: "Herd immunity (or community immunity) occurs when enough people in a population are immune to a disease — through vaccination or prior infection — that transmission chains break down, protecting even those who cannot be vaccinated. The threshold varies by disease: measles requires ~95% immunity; polio requires ~80–85%; flu requires a lower threshold. Herd immunity protects newborns too young to be vaccinated, immunocompromised individuals whose vaccines don't work as well, and the rare individual with a genuine medical contraindication. When community vaccination rates fall below thresholds, previously eliminated diseases can resurge, as seen in US measles outbreaks in 2019 (1,282 cases — the highest since 1992).",
+      },
+      {
+        q: "If vaccines work, why do vaccinated people need to worry about unvaccinated people?",
+        a: "This is a legitimate and important question. Vaccines are highly effective but not perfect — most provide 85–99% protection, meaning a small percentage of vaccinated people remain susceptible. In a community with 95% vaccination, the few vaccinated-but-susceptible individuals are surrounded by immune neighbors, and transmission chains rarely reach them. When vaccination rates drop, susceptible pockets grow and outbreaks can ignite. The 2014–2015 Disneyland measles outbreak illustrated this: it started in a community with high vaccination rates, but a cluster of unvaccinated individuals created a transmission chain that spread to vaccinated people who were in the susceptible minority.",
+      },
+      {
+        q: "Do vaccines cause outbreaks?",
+        a: "No. Vaccines prevent outbreaks — they don't cause them. All outbreaks of vaccine-preventable diseases are driven by clusters of unvaccinated (or incompletely vaccinated) individuals. There is one partial exception worth understanding: the oral polio vaccine (OPV), a live attenuated vaccine used globally for eradication campaigns, can in very rare cases mutate in under-vaccinated communities to produce 'vaccine-derived poliovirus' (VDPV) that can cause paralysis. This is a known trade-off of OPV use. The injectable polio vaccine (IPV) used in the US cannot cause this. VDPV is effectively eliminated by achieving high vaccination coverage.",
+      },
+      {
+        q: "Are some vaccines more important for community protection than others?",
+        a: "Yes. Vaccines against highly contagious airborne diseases — particularly measles (R0 = 12–18) and pertussis (R0 = 12–17) — are most critical for community protection because their high transmissibility means even small gaps in coverage can spark outbreaks. Diseases like tetanus (not person-to-person) and rabies (limited human-to-human transmission) are primarily about individual protection. Travel vaccines like cholera or Japanese Encephalitis are important for individuals going to endemic areas but don't affect domestic community immunity. The MMR and DTaP vaccines carry the highest public health priority from a community immunity standpoint.",
+      },
+    ],
+  },
+  {
+    category: "Monitoring Vaccine Safety",
+    questions: [
+      {
+        q: "What is VAERS and how should I interpret it?",
+        a: "VAERS (Vaccine Adverse Event Reporting System) is a US passive surveillance system co-managed by the CDC and FDA that collects reports of health events occurring after vaccination. Anyone can submit a report — healthcare providers, vaccine manufacturers, or the general public — without requiring proof of causation. This makes VAERS excellent for detecting potential safety signals early, but VAERS data cannot be used to determine whether a vaccine caused a specific adverse event. Reports in VAERS are frequently misinterpreted as 'proof' that vaccines caused reported events — they are not. A report in VAERS means someone experienced a health event after vaccination, not because of vaccination. The CDC and FDA investigate unusual patterns in VAERS data and conduct follow-up studies when signals emerge.",
+      },
+      {
+        q: "How are rare vaccine side effects detected if clinical trials don't catch them?",
+        a: "Clinical trials, while large, are typically powered to detect adverse events occurring in more than 1 in 10,000 individuals. Rarer events are detected through post-market surveillance systems: (1) VAERS — passive voluntary reporting; (2) Vaccine Safety Datalink (VSD) — active surveillance linking vaccination records with medical records for ~12 million people; (3) Clinical Immunization Safety Assessment (CISA) — detailed clinical investigation of complex cases; (4) Biologics Effectiveness and Safety (BEST) System — large-scale data from health claims and EHRs; (5) Global monitoring by WHO, EMA, and national health authorities. Real-world examples of post-market signal detection: the intussusception signal that led to withdrawal of the first rotavirus vaccine (RotaShield) in 1999, and the myocarditis signal following mRNA COVID vaccines in 2021.",
+      },
+      {
+        q: "Why does the Vaccine Injury Compensation Program (VICP) exist if vaccines are safe?",
+        a: "The National Childhood Vaccine Injury Act of 1986 established the VICP as a no-fault compensation system for individuals who experience rare but genuine vaccine injuries. Its existence does not mean vaccines are unsafe — it reflects that no medical intervention is 100% risk-free and that society has a responsibility to support the rare individuals who experience genuine adverse events. The VICP also incentivized vaccine manufacturers to continue producing vaccines by shielding them from excessive litigation, which helps maintain the stable supply of life-saving vaccines. Since 1988, VICP has compensated approximately 10,000 claims and paid out $5.6 billion — while billions of vaccine doses have been administered safely during that period.",
+      },
+    ],
+  },
 ];
 
 export default function FaqPage() {

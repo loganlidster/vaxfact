@@ -2183,6 +2183,437 @@ export const VACCINES: VaccineData[] = [
     color: "#10b981",
     icon: "💉",
   },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 21. Mpox (Monkeypox)
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "mpox",
+    name: "Mpox (Monkeypox)",
+    brandNames: ["JYNNEOS (Imvamune/Imvanex)", "ACAM2000"],
+    diseases: ["Mpox (Monkeypox)", "Smallpox (ACAM2000)"],
+    ageWindow: "Adults and adolescents at risk (18+); 2-dose series",
+    yearsInUse: 15,
+    dosesAdministered: "Over 1 million doses since 2022 outbreak",
+    disease: {
+      description:
+        "Mpox is a zoonotic viral disease caused by the monkeypox virus (genus Orthopoxvirus). It causes fever, swollen lymph nodes, and a characteristic rash that progresses from flat lesions to deep, painful pustules. The 2022 global outbreak (clade IIb) spread primarily through close skin-to-skin contact. Clade I, endemic to Central Africa, has higher mortality (~1–10%).",
+      qualityOfLifeImpact:
+        "The rash is intensely painful, especially when lesions appear on the face, genitals, anus, or mouth. Healing takes 2–4 weeks. Complications include bacterial superinfection, scarring, encephalitis, and eye involvement that can cause blindness. Patients describe the experience as profoundly debilitating. Stigma and social isolation compound the psychological burden.",
+      transmissionRoute:
+        "Close skin-to-skin contact with rash or sores; contact with contaminated bedding or clothing; respiratory droplets during prolonged face-to-face contact; sexual transmission is the dominant route in the 2022 clade IIb outbreak.",
+      incidenceUnvaccinated: 85,
+      incidenceVaccinated: 7,
+      mortalityRate: 1,
+      hospitalizationRate: 12,
+      icuRate: 2,
+      chronicSequelaeRate: 8,
+      acuteQoLLoss: 75,
+      longTermQoLLoss: 15,
+      outbreakPotential: "high",
+    },
+    effectiveness: {
+      againstInfection: 86,
+      againstSevereDisease: 93,
+      againstDeath: 97,
+      waningNotes:
+        "JYNNEOS (2-dose subcutaneous series) showed 86% effectiveness in the 2022 outbreak per CDC studies. Immunity is expected to last years based on smallpox vaccine analogy but long-term data for mpox specifically are still accumulating. A single dose provides substantial but partial protection.",
+      breakthroughNotes:
+        "Breakthrough infections reported but generally milder. Most breakthrough cases involve incomplete vaccination (1 dose). Vaccination after exposure (within 4 days) can prevent illness; within 14 days can reduce severity.",
+    },
+    scores: {
+      yearsOfStudy: 45,
+      longTermSafetyEvidence: 72,
+      exposureRiskBase: 30,
+      diseaseConsequence: 72,
+      vaccineRisk: 12,
+      netBenefit: 76,
+      evidenceConfidence: 78,
+    },
+    adverseEvents: [
+      { name: "Injection site reactions", probability: 60000, severityWeight: 3, type: "mild", notes: "Redness, itching, swelling — very common" },
+      { name: "Fatigue/headache/myalgia", probability: 40000, severityWeight: 3, type: "mild", notes: "Systemic reactions common after dose 2" },
+      { name: "Fever", probability: 15000, severityWeight: 3, type: "mild", notes: "Low-grade, resolves in 1–2 days" },
+      { name: "Myocarditis (ACAM2000)", probability: 7, severityWeight: 70, type: "moderate", notes: "Primarily with live ACAM2000, not JYNNEOS. Not recommended for cardiac patients." },
+      { name: "Anaphylaxis", probability: 1, severityWeight: 80, type: "rare-serious", notes: "Rare; standard precautions apply" },
+    ],
+    scenarioModifiers: {
+      daycare: 0.5,
+      travel: 2.0,
+      outbreak: 4.5,
+      siblings: 0.8,
+      immunocompromisedHousehold: 2.5,
+      ruralVsUrban: 0.4,
+    },
+    schedule: {
+      doses: 2,
+      timing: ["Day 0", "Day 28 (4 weeks later)"],
+      minimumInterval: "28 days between doses",
+      catchUpNotes:
+        "Single dose provides meaningful protection if 2-dose series cannot be completed before exposure. Post-exposure prophylaxis (PEP): 2 doses within 14 days of exposure. ACAM2000 is single-dose but contraindicated in immunocompromised and cardiac patients.",
+      canCombineWith: [],
+      cannotCombineWith: ["ACAM2000 (live vaccine — cannot be given with other live vaccines simultaneously)"],
+    },
+    sources: [
+      { title: "Payne et al. — Effectiveness of JYNNEOS vaccine in the 2022 outbreak", type: "cohort", year: 2022, country: "USA", sampleSize: "32,000 contacts", confidence: "moderate" },
+      { title: "WHO — Mpox vaccines: WHO position paper", type: "review", year: 2023, country: "Global", sampleSize: "Global surveillance", confidence: "high" },
+      { title: "Wolff Sagy et al. — Real-world effectiveness, Israel 2022", type: "cohort", year: 2023, country: "Israel", sampleSize: "4,700 contacts", confidence: "moderate" },
+    ],
+    countryPolicies: [
+      { country: "United States", code: "US", recommended: true, schedule: "2 doses (Day 0, Day 28) for at-risk adults", rationale: "CDC recommends for gay/bisexual men and others with multiple or anonymous partners, immunocompromised individuals, and those with known exposures." },
+      { country: "United Kingdom", code: "GB", recommended: true, schedule: "2 doses (JYNNEOS) for at-risk populations", rationale: "UKHSA recommends for MSM with multiple partners and healthcare workers handling mpox patients." },
+      { country: "Germany", code: "DE", recommended: true, schedule: "2 doses for at-risk groups", rationale: "STIKO recommends for MSM with multiple partners and close contacts of cases." },
+    ],
+    prosList: [
+      "86% effectiveness against mpox infection demonstrated in the 2022 real-world outbreak",
+      "JYNNEOS is a replication-deficient vaccine — cannot cause mpox or vaccinia disease",
+      "Also provides protection against smallpox (dual benefit given bioterrorism risk)",
+      "Post-exposure prophylaxis: vaccination within 4 days of exposure can prevent illness",
+      "Well-tolerated with primarily mild, injection-site reactions",
+    ],
+    consList: [
+      "Requires 2 doses 4 weeks apart for full protection",
+      "Currently recommended only for at-risk populations, not universal",
+      "Limited long-term data on duration of immunity (field use began 2022)",
+      "ACAM2000 (alternative) is a live virus vaccine with more significant side effects",
+      "Supply constraints have limited access in outbreak settings",
+    ],
+    uncertainties: [
+      "Duration of immunity from JYNNEOS — long-term follow-up studies ongoing",
+      "Whether a single dose provides sufficient protection in high-exposure settings",
+      "Effectiveness against Clade I mpox (more virulent Central African strain), which is causing new outbreaks",
+      "Whether population-level vaccination of at-risk groups can interrupt transmission and prevent future outbreaks",
+    ],
+    credibleCritiques: [
+      "Some researchers argue the risk-stratified approach (vaccinating only 'at-risk' populations) creates stigma and misses transmission chains in heterosexual networks and close household contacts (Thornhill et al., 2022).",
+      "The emergency authorization and accelerated rollout in 2022 meant post-market data were collected rapidly under outbreak conditions, making it harder to disentangle vaccine effects from behavioral changes during the outbreak.",
+    ],
+    color: "#f59e0b",
+    icon: "🟡",
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 22. Cholera
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "cholera",
+    name: "Cholera",
+    brandNames: ["Vaxchora (oral, single dose)", "Dukoral (oral, 2-dose)", "Shanchol/Euvichol-Plus (oral, 2-dose)"],
+    diseases: ["Cholera (Vibrio cholerae)"],
+    ageWindow: "Adults and children ≥2 years; primarily for travelers and endemic area residents",
+    yearsInUse: 30,
+    dosesAdministered: "Over 100 million doses in humanitarian campaigns",
+    disease: {
+      description:
+        "Cholera is a severe diarrheal disease caused by Vibrio cholerae. Without treatment, the profuse watery diarrhea ('rice water stools') can cause fatal dehydration within hours. In outbreak settings — particularly in displaced populations, after natural disasters, or in areas lacking clean water — cholera can spread explosively. Global burden: 1.3–4 million cases and 21,000–143,000 deaths annually.",
+      qualityOfLifeImpact:
+        "Severe cholera causes extreme dehydration, muscle cramps, sunken eyes, and circulatory collapse. Death can occur within 2–12 hours without rehydration. Survivors typically recover fully with adequate treatment (oral rehydration salts, IV fluids). The primary burden is in contexts where healthcare access is limited, making early vaccination and water sanitation the critical interventions.",
+      transmissionRoute:
+        "Fecal-oral route through contaminated water or food. One infected person can contaminate a water supply and cause hundreds of downstream cases. Seafood (especially shellfish) from contaminated water is a common vehicle in traveler cases.",
+      incidenceUnvaccinated: 300,
+      incidenceVaccinated: 60,
+      mortalityRate: 200,
+      hospitalizationRate: 20,
+      icuRate: 5,
+      chronicSequelaeRate: 1,
+      acuteQoLLoss: 85,
+      longTermQoLLoss: 5,
+      outbreakPotential: "very-high",
+    },
+    effectiveness: {
+      againstInfection: 80,
+      againstSevereDisease: 88,
+      againstDeath: 90,
+      waningNotes:
+        "Protection wanes over 2–3 years. In endemic settings, Shanchol/Euvichol provides ~65% protection for 5 years. Vaxchora (single dose, travelers) provides ~90% protection for the first 3 months but wanes significantly by 3 years. Boosters are recommended for ongoing risk.",
+      breakthroughNotes:
+        "Vaccinated individuals can contract cholera but typically have milder illness and are less likely to develop severe dehydrating disease. Vaccination also reduces environmental shedding, providing community-level protection.",
+    },
+    scores: {
+      yearsOfStudy: 80,
+      longTermSafetyEvidence: 82,
+      exposureRiskBase: 15,
+      diseaseConsequence: 82,
+      vaccineRisk: 6,
+      netBenefit: 68,
+      evidenceConfidence: 82,
+    },
+    adverseEvents: [
+      { name: "Nausea/abdominal cramps", probability: 20000, severityWeight: 3, type: "mild", notes: "Common with oral vaccines; resolves within 24 hours" },
+      { name: "Diarrhea (mild)", probability: 8000, severityWeight: 2, type: "mild", notes: "Paradoxical but self-limiting; much milder than disease" },
+      { name: "Headache/fatigue", probability: 15000, severityWeight: 2, type: "mild", notes: "Common systemic response" },
+      { name: "Serious adverse events", probability: 0.5, severityWeight: 30, type: "rare-serious", notes: "Extremely rare; vaccine is considered among the safest available" },
+    ],
+    scenarioModifiers: {
+      daycare: 0.5,
+      travel: 5.0,
+      outbreak: 8.0,
+      siblings: 0.5,
+      immunocompromisedHousehold: 1.8,
+      ruralVsUrban: 2.0,
+    },
+    schedule: {
+      doses: 1,
+      timing: ["Single dose at least 10 days before travel (Vaxchora)"],
+      minimumInterval: "N/A for single-dose Vaxchora",
+      catchUpNotes:
+        "Vaxchora: single oral dose, minimum 10 days before travel. Dukoral: 2 doses 1–6 weeks apart. Shanchol: 2 doses 14 days apart (preferred in endemic/outbreak settings). Booster at 2 years for ongoing risk. Not recommended for routine US childhood immunization — targeted to travelers and outbreak response.",
+      canCombineWith: ["Other travel vaccines (separate by 10 days for live oral vaccines)"],
+      cannotCombineWith: ["Oral Typhoid vaccine (must be separated by at least 8 hours)"],
+    },
+    sources: [
+      { title: "Bi et al. — Protective efficacy of oral cholera vaccines (Cochrane)", type: "meta-analysis", year: 2017, country: "Multi-country", sampleSize: "245,000+ participants", confidence: "high" },
+      { title: "WHO — Cholera vaccines: WHO position paper", type: "review", year: 2017, country: "Global", sampleSize: "Global surveillance", confidence: "high" },
+      { title: "Qadri et al. — Efficacy of a single-dose regimen (CHOLVAX-1)", type: "RCT", year: 2016, country: "Bangladesh", sampleSize: "200,000 residents", confidence: "high" },
+    ],
+    countryPolicies: [
+      { country: "United States", code: "US", recommended: true, schedule: "Single dose (Vaxchora) for travelers to endemic regions", rationale: "FDA-approved for adults traveling to cholera-affected areas. Not part of routine childhood schedule." },
+      { country: "Global (WHO)", code: "WLD", recommended: true, schedule: "2 doses in outbreak/endemic settings (Shanchol/Euvichol)", rationale: "WHO Strategic Advisory Group recommends OCV campaigns in outbreak response and pre-emptive use in high-risk settings." },
+    ],
+    prosList: [
+      "Highly effective against severe disease and death in outbreak settings",
+      "WHO pre-qualified oral vaccines are inexpensive and can be deployed in mass campaigns",
+      "Single-dose option (Vaxchora) is highly convenient for travelers",
+      "Proven to reduce outbreak intensity when deployed proactively in high-risk communities",
+      "Excellent safety profile — primarily mild GI side effects",
+    ],
+    consList: [
+      "Low relevance for most US residents not traveling to endemic areas",
+      "Protection wanes: Vaxchora provides strong short-term protection but declines over 2–3 years",
+      "Oral vaccine must be taken correctly (empty stomach, no food for 1 hour after)",
+      "Not protective against all cholera strains (primarily O1 serogroup; O139 not covered)",
+      "Access and cold-chain requirements limit deployment in the most resource-limited settings",
+    ],
+    uncertainties: [
+      "Optimal single-dose vs. two-dose strategy in outbreak settings — single dose campaigns are more logistically feasible but may provide shorter protection",
+      "Effectiveness of cholera vaccines in severely immunocompromised individuals",
+      "Whether mass vaccination alone can interrupt outbreaks without concurrent WASH (water, sanitation, hygiene) improvements",
+    ],
+    credibleCritiques: [
+      "Some global health experts argue that oral cholera vaccine (OCV) campaigns divert resources from water and sanitation infrastructure, which is the only sustainable long-term solution (Bhattacharya & Bhattacharya, 2021). The WHO acknowledges OCV as a complement to, not substitute for, WASH improvements.",
+      "The Vaxchora approval for travelers (single dose) used immunogenicity as a surrogate endpoint rather than direct efficacy data from travelers — some researchers argue the evidence base for traveler protection is weaker than for endemic populations.",
+    ],
+    color: "#06b6d4",
+    icon: "💧",
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 23. Japanese Encephalitis
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "je",
+    name: "Japanese Encephalitis",
+    brandNames: ["Ixiaro (JEVAX)", "SA 14-14-2 (used in Asia)"],
+    diseases: ["Japanese Encephalitis"],
+    ageWindow: "2 months and older; travelers to Asia/Western Pacific staying >1 month in rural areas",
+    yearsInUse: 35,
+    dosesAdministered: "Over 400 million doses (SA 14-14-2) in Asia",
+    disease: {
+      description:
+        "Japanese Encephalitis (JE) is a viral encephalitis transmitted by Culex mosquitoes in Asia and the Western Pacific. The vast majority of infections (99%+) are asymptomatic. However, when symptomatic encephalitis develops, 20–30% of patients die and 30–50% of survivors suffer permanent neurological or psychiatric sequelae. There is no specific treatment — supportive care only. Approximately 68,000 cases of JE occur annually.",
+      qualityOfLifeImpact:
+        "JE encephalitis causes fever, seizures, altered consciousness, and paralysis. Survivors frequently suffer cognitive impairment, motor disabilities, behavioral changes, and epilepsy. In a disease with no treatment, the impact on lifetime quality of life is profound — especially given that most cases occur in children under 15. Caregiver burden is substantial in affected communities.",
+      transmissionRoute:
+        "Bite of infected Culex mosquitoes (primarily Culex tritaeniorhynchus). Pigs and wading birds are reservoir hosts. Risk is highest in rural, agricultural areas with rice paddies and pig farming. Not transmitted person-to-person.",
+      incidenceUnvaccinated: 20,
+      incidenceVaccinated: 0.4,
+      mortalityRate: 2500,
+      hospitalizationRate: 100,
+      icuRate: 40,
+      chronicSequelaeRate: 40,
+      acuteQoLLoss: 90,
+      longTermQoLLoss: 60,
+      outbreakPotential: "moderate",
+    },
+    effectiveness: {
+      againstInfection: 98,
+      againstSevereDisease: 99,
+      againstDeath: 99,
+      waningNotes:
+        "Two-dose primary series (Ixiaro) provides robust protection. Seroprotection persists for at least 12–24 months; a booster at 12 months is recommended for ongoing risk. Children vaccinated in Asia with SA 14-14-2 appear to have durable long-term immunity after 2 doses.",
+      breakthroughNotes:
+        "Vaccine failures are extremely rare. Virtually all JE cases in vaccinated individuals have occurred following significant immunosuppression or incomplete vaccination.",
+    },
+    scores: {
+      yearsOfStudy: 78,
+      longTermSafetyEvidence: 80,
+      exposureRiskBase: 8,
+      diseaseConsequence: 92,
+      vaccineRisk: 8,
+      netBenefit: 72,
+      evidenceConfidence: 85,
+    },
+    adverseEvents: [
+      { name: "Injection site pain/swelling", probability: 30000, severityWeight: 2, type: "mild", notes: "Very common, resolves within 2 days" },
+      { name: "Headache/myalgia/fatigue", probability: 20000, severityWeight: 3, type: "mild", notes: "Common systemic reactions" },
+      { name: "Fever", probability: 5000, severityWeight: 3, type: "mild", notes: "Less common than other vaccines" },
+      { name: "Hypersensitivity reactions (urticaria, angioedema)", probability: 7, severityWeight: 45, type: "moderate", notes: "More common with older JE vaccine formulations. Ixiaro has significantly lower hypersensitivity rate." },
+      { name: "Anaphylaxis", probability: 0.5, severityWeight: 80, type: "rare-serious", notes: "Very rare with Ixiaro formulation" },
+    ],
+    scenarioModifiers: {
+      daycare: 0.3,
+      travel: 8.0,
+      outbreak: 3.0,
+      siblings: 0.3,
+      immunocompromisedHousehold: 1.2,
+      ruralVsUrban: 3.0,
+    },
+    schedule: {
+      doses: 2,
+      timing: ["Day 0", "Day 28"],
+      minimumInterval: "28 days between doses; complete series ≥1 week before travel",
+      catchUpNotes:
+        "If only 1 week before travel: accelerated schedule (Day 0 and Day 7) is FDA-approved for adults 18–65. Booster at 12 months for ongoing risk. Recommended for travelers spending ≥1 month in endemic regions during transmission season, or shorter trips with extensive outdoor/rural exposure.",
+      canCombineWith: ["Other travel vaccines"],
+      cannotCombineWith: [],
+    },
+    sources: [
+      { title: "WHO — Japanese encephalitis vaccines: WHO position paper", type: "review", year: 2015, country: "Global", sampleSize: "Global surveillance", confidence: "high" },
+      { title: "Tauber et al. — Randomized phase III Ixiaro vs. JE-VAX", type: "RCT", year: 2007, country: "Multi-country", sampleSize: "867 participants", confidence: "high" },
+      { title: "Liu et al. — Long-term immunity SA 14-14-2 in children", type: "cohort", year: 2010, country: "China", sampleSize: "5,000 children", confidence: "high" },
+    ],
+    countryPolicies: [
+      { country: "United States", code: "US", recommended: true, schedule: "2 doses (Day 0 and Day 28) for eligible travelers", rationale: "CDC recommends for travelers to JE-endemic areas with >1 month exposure or high-risk activities." },
+      { country: "Japan", code: "JP", recommended: true, schedule: "4 doses in childhood (routine)", rationale: "Part of universal childhood immunization program given endemic transmission." },
+      { country: "India", code: "IN", recommended: true, schedule: "2 doses in endemic states (SA 14-14-2)", rationale: "National immunization program in 179 endemic districts covering 250+ million children." },
+    ],
+    prosList: [
+      "Near-complete (98–99%) protection against a disease with 20–30% mortality and 40–50% permanent neurological disability rate",
+      "No treatment exists for JE — prevention is the only option",
+      "Excellent safety profile with Ixiaro (modern inactivated vaccine)",
+      "35+ years of use of SA 14-14-2 in Asia covering hundreds of millions of doses",
+      "One-time traveler series (plus booster) provides multi-year protection",
+    ],
+    consList: [
+      "Most US residents have negligible exposure risk — relevant primarily for travelers and expats",
+      "Requires 2-dose series ideally completed 1 month before travel",
+      "Cost can be significant ($250–400 for 2-dose traveler series)",
+      "Older JE vaccine (JE-VAX) had significant hypersensitivity risk — modern Ixiaro is much improved",
+    ],
+    uncertainties: [
+      "Duration of booster immunity after the 12-month booster dose",
+      "Effectiveness of accelerated 0/7-day schedule vs. standard 0/28-day schedule in terms of long-term immunity",
+      "Whether climate change-driven northward expansion of Culex mosquitoes will change the risk profile for travelers to traditionally lower-risk regions",
+    ],
+    credibleCritiques: [
+      "The original Japanese JE vaccine (mouse-brain derived) carried a small but real risk of hypersensitivity reactions and has been replaced by modern cell-culture vaccines, but some countries still use older formulations in public programs due to cost. Advocates for universal modern vaccine access argue this creates unequal protection (Halstead & Thomas, 2011).",
+    ],
+    color: "#8b5cf6",
+    icon: "🦟",
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // 24. Tdap (Adult Booster)
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    id: "tdap",
+    name: "Tdap (Adult Booster)",
+    brandNames: ["Boostrix", "Adacel"],
+    diseases: ["Tetanus (Lockjaw)", "Diphtheria", "Pertussis (Whooping Cough)"],
+    ageWindow: "11+ years; every 10 years for tetanus/diphtheria; once for pertussis component (Tdap), then Td",
+    yearsInUse: 20,
+    dosesAdministered: "Over 200 million doses in the US since 2005",
+    disease: {
+      description:
+        "Tdap is the adolescent/adult formulation of the DTaP childhood vaccine, with reduced diphtheria and pertussis antigen doses to minimize side effects in older immune systems. It serves two critical functions: renewing tetanus and diphtheria immunity that wanes over 10 years, and providing a single dose of pertussis protection to adolescents and adults who become the primary source of whooping cough transmission to unprotected infants. The maternal Tdap program (vaccination at 27–36 weeks of each pregnancy) is the single most effective strategy for protecting newborns before their own vaccine series begins.",
+      qualityOfLifeImpact:
+        "In adults, pertussis causes the '100-day cough' — weeks of violent coughing fits that can fracture ribs, cause urinary incontinence, and trigger vomiting. Adults rarely die but suffer significant quality-of-life impairment for 1–3 months. Tetanus in an unvaccinated adult is catastrophic: 10–20% die even with ICU care, survivors describe the experience of uncontrolled muscle spasms as traumatic. Diphtheria is re-emerging in pockets of under-vaccinated populations in Europe and the US.",
+      transmissionRoute:
+        "Pertussis: highly contagious respiratory droplets (R0 = 12–17). Diphtheria: respiratory droplets. Tetanus: contamination of wounds with soil, dust, or manure containing Clostridium tetani spores (not person-to-person).",
+      incidenceUnvaccinated: 200,
+      incidenceVaccinated: 60,
+      mortalityRate: 15,
+      hospitalizationRate: 5,
+      icuRate: 2,
+      chronicSequelaeRate: 3,
+      acuteQoLLoss: 55,
+      longTermQoLLoss: 10,
+      outbreakPotential: "high",
+    },
+    effectiveness: {
+      againstInfection: 70,
+      againstSevereDisease: 88,
+      againstDeath: 97,
+      waningNotes:
+        "Pertussis immunity wanes significantly — protection drops to ~70% within 2–3 years of Tdap and to near baseline by 8–10 years. This is why adults remain a major reservoir of pertussis transmission. Tetanus and diphtheria protection is much more durable, lasting 10 years, which is why the Td (without pertussis) booster every 10 years maintains adequate protection for those components.",
+      breakthroughNotes:
+        "Vaccinated adolescents and adults commonly get pertussis — typically milder illness, but they can still transmit to vulnerable infants. CDC data show that 30–50% of pertussis cases in recent outbreaks occurred in fully vaccinated individuals, reflecting waning immunity.",
+    },
+    scores: {
+      yearsOfStudy: 82,
+      longTermSafetyEvidence: 86,
+      exposureRiskBase: 55,
+      diseaseConsequence: 70,
+      vaccineRisk: 8,
+      netBenefit: 82,
+      evidenceConfidence: 88,
+    },
+    adverseEvents: [
+      { name: "Injection site pain/redness/swelling", probability: 60000, severityWeight: 2, type: "mild", notes: "Very common; much higher rate than DTaP in children. Resolves in 1–3 days." },
+      { name: "Headache/fatigue/fever", probability: 30000, severityWeight: 2, type: "mild", notes: "Common systemic response" },
+      { name: "Extensive limb swelling", probability: 200, severityWeight: 15, type: "mild", notes: "More common with repeated booster doses; self-limiting" },
+      { name: "Guillain-Barré syndrome", probability: 0.4, severityWeight: 75, type: "rare-serious", notes: "Extremely rare signal from tetanus-containing vaccines. Observed rate not clearly above background. IOM 2012: 'insufficient evidence' to accept or reject causality." },
+      { name: "Anaphylaxis", probability: 1, severityWeight: 80, type: "rare-serious", notes: "Very rare" },
+    ],
+    scenarioModifiers: {
+      daycare: 1.8,
+      travel: 2.2,
+      outbreak: 3.5,
+      siblings: 2.0,
+      immunocompromisedHousehold: 2.2,
+      ruralVsUrban: 1.3,
+    },
+    schedule: {
+      doses: 1,
+      timing: [
+        "Age 11–12 (routine adolescent Tdap)",
+        "27–36 weeks of each pregnancy (maternal Tdap)",
+        "Adults who never received Tdap: single dose, then Td every 10 years",
+        "Wound management: Td if >5 years since last booster",
+      ],
+      minimumInterval: "No minimum interval from previous Td if clinical indication (wound, outbreak). Tdap replaces one Td in the 10-year cycle.",
+      catchUpNotes:
+        "Any adult who has never received Tdap should get one dose. Healthcare workers and household contacts of infants under 12 months (the 'cocoon strategy') should be prioritized. Pregnant women: EVERY pregnancy, regardless of prior Tdap history, to maximize maternal antibody transfer to the newborn.",
+      canCombineWith: ["Influenza vaccine", "All other adult vaccines at same visit"],
+      cannotCombineWith: [],
+    },
+    sources: [
+      { title: "Klein NP et al. — Waning protection after acellular pertussis vaccines", type: "cohort", year: 2012, country: "USA", sampleSize: "469,000 children", confidence: "high" },
+      { title: "Amirthalingam et al. — Effectiveness of maternal pertussis vaccination, UK", type: "cohort", year: 2014, country: "United Kingdom", sampleSize: "20,074 infants", confidence: "high" },
+      { title: "CDC MMWR — Updated recommendations for Tdap booster use", type: "surveillance", year: 2020, country: "USA", sampleSize: "National surveillance", confidence: "high" },
+      { title: "IOM Report: Adverse Effects of Vaccines", type: "review", year: 2012, country: "USA", sampleSize: "Comprehensive literature review", confidence: "high" },
+    ],
+    countryPolicies: [
+      { country: "United States", code: "US", recommended: true, schedule: "Age 11–12; each pregnancy (27–36w); single adult dose if never received; Td booster every 10 years", rationale: "CDC ACIP standard recommendation. Maternal Tdap is the single most effective intervention to protect newborns from pertussis before their vaccine series begins." },
+      { country: "United Kingdom", code: "GB", recommended: true, schedule: "Maternal Tdap at 16–32 weeks; Td boosters for travelers/wound care", rationale: "UK introduced maternal Tdap in 2012 after infant deaths during pertussis resurgence; 90%+ effectiveness in preventing infant hospitalization." },
+      { country: "Australia", code: "AU", recommended: true, schedule: "Adolescent, pregnant women, and new parents (cocooning)", rationale: "TGA-approved; national program includes parental cocooning strategy." },
+    ],
+    prosList: [
+      "Essential for protecting newborns — maternal Tdap at 27–36 weeks provides passive antibody protection to infants before they can be vaccinated",
+      "Renews life-saving tetanus immunity — unvaccinated adults face 10–20% mortality from tetanus even with ICU care",
+      "Diphtheria protection critical given recent re-emergence in Europe among unvaccinated communities",
+      "20 years of safety data as an adolescent/adult formulation; excellent record",
+      "Pertussis immunity wanes — adolescent and adult boosters help reduce transmission to vulnerable infants",
+    ],
+    consList: [
+      "Injection site reactions are notably common and can be painful for several days",
+      "Pertussis protection wanes rapidly — Tdap is a temporary solution to an inherent limitation of acellular vaccines",
+      "Adults sometimes experience significant arm swelling with repeated booster doses",
+      "Awareness of the adult Tdap need is low — many adults don't know they need this booster",
+    ],
+    uncertainties: [
+      "Whether next-generation pertussis vaccines (whole-cell adjuvanted or live attenuated) can provide longer-lasting protection and eventually replace the waning acellular formulation",
+      "The optimal interval between Tdap and Td boosters given the rapid waning of pertussis protection",
+      "Whether the 'cocoon strategy' (vaccinating household contacts of newborns) adds protection above and beyond maternal vaccination alone",
+      "Long-term strategy as pertussis strains continue to evolve and partially evade vaccine-induced immunity",
+    ],
+    credibleCritiques: [
+      "Some researchers argue the current Tdap strategy — vaccinating pregnant women every pregnancy — is an acknowledgment of a fundamental failure of acellular pertussis vaccines to provide durable herd immunity, and that the real solution requires reinvesting in next-generation pertussis vaccines rather than repeatedly boosting a waning product (Warfel et al., 2014).",
+      "The 'cocoon strategy' of vaccinating all household contacts of newborns was de-prioritized by CDC in favor of maternal vaccination — critics note that the switch was based partly on logistical feasibility rather than superiority of evidence, and that both strategies together likely provide the greatest protection.",
+    ],
+    color: "#f97316",
+    icon: "💪",
+  },
 ];
 
 // ============================================================

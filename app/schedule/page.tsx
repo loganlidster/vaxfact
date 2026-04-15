@@ -353,6 +353,188 @@ export default function SchedulePage() {
             })}
           </div>
 
+          {/* Catch-up Schedule Section */}
+          <div style={{
+            marginTop: 48,
+            background: "#0d1526",
+            border: "1px solid #1e293b",
+            borderRadius: 14,
+            padding: 28,
+          }}>
+            <h2 style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: 22,
+              fontWeight: 700,
+              color: "#f1f5f9",
+              marginBottom: 8,
+              paddingBottom: 12,
+              borderBottom: "1px solid #1e293b",
+            }}>
+              📋 Catch-Up Schedule Principles
+            </h2>
+            <p style={{ color: "#94a3b8", fontSize: 14, lineHeight: 1.75, marginBottom: 20 }}>
+              If your child has missed any vaccines, catch-up vaccination is straightforward. The CDC publishes a complete
+              catch-up schedule for children 4 months through 18 years. Key principles:
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }} className="vf-schedule-grid">
+              {[
+                {
+                  icon: "✅",
+                  title: "Start at any age",
+                  desc: "Most vaccines can be started at any age — you do not need to restart a series from scratch. Partial series still count.",
+                },
+                {
+                  icon: "⏱",
+                  title: "Minimum intervals still apply",
+                  desc: "Doses given too close together may not provide full immunity. Your provider will calculate the correct spacing.",
+                },
+                {
+                  icon: "🎯",
+                  title: "Prioritize early-risk vaccines",
+                  desc: "Pertussis, Hib, and PCV protect infants most during early months. Catch up as quickly as possible for these.",
+                },
+                {
+                  icon: "🔗",
+                  title: "Combination vaccines help",
+                  desc: "Combination vaccines like Pediarix (HepB+DTaP+IPV) and Pentacel (DTaP+IPV+Hib) can reduce total injections during catch-up.",
+                },
+              ].map((item) => (
+                <div key={item.title} style={{
+                  background: "#060e1e",
+                  border: "1px solid #1e293b",
+                  borderRadius: 8,
+                  padding: 16,
+                  display: "flex",
+                  gap: 12,
+                  alignItems: "flex-start",
+                }}>
+                  <span style={{ fontSize: 20, flexShrink: 0 }}>{item.icon}</span>
+                  <div>
+                    <div style={{ color: "#f1f5f9", fontSize: 14, fontWeight: 600, marginBottom: 4 }}>{item.title}</div>
+                    <div style={{ color: "#64748b", fontSize: 13, lineHeight: 1.6 }}>{item.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 16 }}>
+              <a
+                href="https://www.cdc.gov/vaccines/schedules/hcp/imz/catchup.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#3b82f6",
+                  fontSize: 14,
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                }}
+              >
+                → View full CDC catch-up schedule ↗
+              </a>
+            </div>
+          </div>
+
+          {/* Adult Schedule Section */}
+          <div style={{
+            marginTop: 28,
+            background: "#0d1526",
+            border: "1px solid #1e293b",
+            borderRadius: 14,
+            padding: 28,
+          }}>
+            <h2 style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: 22,
+              fontWeight: 700,
+              color: "#f1f5f9",
+              marginBottom: 8,
+              paddingBottom: 12,
+              borderBottom: "1px solid #1e293b",
+            }}>
+              🧑 Adult Vaccine Schedule
+            </h2>
+            <p style={{ color: "#94a3b8", fontSize: 14, lineHeight: 1.75, marginBottom: 20 }}>
+              Vaccine protection doesn't stop at childhood. Adults need ongoing boosters and new vaccines as they age.
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {[
+                {
+                  vaccine: "Tdap / Td",
+                  color: "#f97316",
+                  when: "Tdap once (if never received), then Td every 10 years. Tdap each pregnancy (27–36 weeks).",
+                  why: "Tetanus immunity wanes; pertussis protection needed to protect newborns.",
+                },
+                {
+                  vaccine: "Influenza",
+                  color: "#3b82f6",
+                  when: "Every year, ideally September–October before flu season.",
+                  why: "Flu strains change annually; prior immunity doesn't fully protect against new strains.",
+                },
+                {
+                  vaccine: "COVID-19",
+                  color: "#8b5cf6",
+                  when: "Updated booster annually per current CDC guidance.",
+                  why: "Protection wanes; updated formulations better match circulating variants.",
+                },
+                {
+                  vaccine: "Shingles (Shingrix)",
+                  color: "#ec4899",
+                  when: "2 doses at age 50+; 2–6 months apart.",
+                  why: "Varicella virus reactivates as shingles in 1/3 of adults. Shingrix is 90%+ effective.",
+                },
+                {
+                  vaccine: "Pneumococcal (PCV20/PPSV23)",
+                  color: "#06b6d4",
+                  when: "PCV20 once at age 65+ (or earlier for high-risk conditions).",
+                  why: "Pneumococcal pneumonia causes ~150,000 hospitalizations/year in US adults.",
+                },
+                {
+                  vaccine: "RSV (Abrysvo/Mresvia)",
+                  color: "#10b981",
+                  when: "Single dose at age 60+; or during pregnancy (32–36 weeks) to protect newborn.",
+                  why: "RSV causes 60,000–160,000 hospitalizations/year in adults 65+.",
+                },
+                {
+                  vaccine: "Hepatitis B",
+                  color: "#0ea5e9",
+                  when: "3-dose series for all unvaccinated adults; Heplisav-B is a convenient 2-dose adult option.",
+                  why: "Many adults were never vaccinated; hepatitis B remains a significant cause of liver cancer.",
+                },
+              ].map((item) => (
+                <div key={item.vaccine} style={{
+                  display: "flex",
+                  gap: 14,
+                  background: "#060e1e",
+                  border: "1px solid #1e293b",
+                  borderLeft: `3px solid ${item.color}`,
+                  borderRadius: "0 8px 8px 0",
+                  padding: "12px 16px",
+                  alignItems: "flex-start",
+                }}>
+                  <div style={{ minWidth: 120 }}>
+                    <span style={{ color: item.color, fontSize: 14, fontWeight: 700 }}>{item.vaccine}</span>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ color: "#e2e8f0", fontSize: 13, fontWeight: 600, marginBottom: 3 }}>{item.when}</div>
+                    <div style={{ color: "#64748b", fontSize: 12, lineHeight: 1.5 }}>{item.why}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: 14 }}>
+              <a
+                href="https://www.cdc.gov/vaccines/schedules/hcp/imz/adult.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#3b82f6", fontSize: 14, fontWeight: 600, textDecoration: "none" }}
+              >
+                → View full CDC adult immunization schedule ↗
+              </a>
+            </div>
+          </div>
+
           {/* Notes */}
           <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 12 }}>
             <div
