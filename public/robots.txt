@@ -1,0 +1,11 @@
+# VaxFact.net — robots.txt
+# Allow all legitimate crawlers
+
+User-agent: *
+Allow: /
+
+# Disallow API routes from indexing
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://vaxfact.net/sitemap.xml

@@ -1,0 +1,388 @@
+@import "tailwindcss";
+
+/* ============================================================
+   VaxFact Design System
+   ============================================================ */
+
+:root {
+  --bg: #f7f8fb;
+  --surface: #ffffff;
+  --surface-2: #f1f4f9;
+  --surface-3: #e8edf6;
+  --text: #172033;
+  --muted: #5f6b85;
+  --line: #d9e0ee;
+  --line-strong: #bfcae2;
+  --primary: #2346a0;
+  --primary-hover: #1a368a;
+  --primary-soft: #eaf0ff;
+  --primary-mid: #5f88f1;
+  --good: #1f7a4d;
+  --good-soft: #ecf8f0;
+  --good-line: #c8e8d1;
+  --warn: #b26a00;
+  --warn-soft: #fff5e8;
+  --warn-line: #f0dbb0;
+  --caution: #7b3a10;
+  --caution-soft: #fff1e8;
+  --shadow: 0 12px 30px rgba(23, 32, 51, 0.08);
+  --shadow-hover: 0 18px 36px rgba(23, 32, 51, 0.12);
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: "Source Serif 4", Georgia, Cambria, "Times New Roman", serif;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+p { margin: 0; }
+
+/* ============================================================
+   Topbar / Nav
+   ============================================================ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  background: rgba(247, 248, 251, 0.88);
+  border-bottom: 1px solid rgba(217, 224, 238, 0.8);
+  min-height: 72px;
+}
+
+/* ============================================================
+   Container
+   ============================================================ */
+.vf-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  padding: 14px 20px;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: inherit;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 8px 20px rgba(35, 70, 160, 0.25);
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 12px 28px rgba(35, 70, 160, 0.32);
+}
+
+.btn-secondary {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.btn-secondary:hover {
+  background: var(--surface-3);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+.btn-ghost:hover {
+  background: var(--surface-2);
+  border-color: var(--line-strong);
+}
+
+.btn-sm {
+  padding: 9px 14px;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================
+   Cards
+   ============================================================ */
+.vf-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.vf-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ============================================================
+   Pills / Badges
+   ============================================================ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  font-family: Inter, sans-serif;
+}
+.pill-good {
+  background: var(--good-soft);
+  color: var(--good);
+  border-color: var(--good-line);
+}
+.pill-warn {
+  background: var(--warn-soft);
+  color: var(--warn);
+  border-color: var(--warn-line);
+}
+.pill-primary {
+  background: var(--primary-soft);
+  color: var(--primary);
+  border-color: #c2d4f7;
+}
+
+/* ============================================================
+   Score Bars
+   ============================================================ */
+.metric-bar {
+  margin-bottom: 10px;
+}
+.metric-bar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-family: Inter, sans-serif;
+}
+.metric-bar-row span { color: var(--muted); }
+.metric-bar-row strong { color: var(--text); font-weight: 700; }
+.bar-track {
+  height: 10px;
+  border-radius: 999px;
+  background: #e9edf6;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-mid));
+  transition: width 0.5s ease;
+}
+
+/* ============================================================
+   Inline expand / collapse
+   ============================================================ */
+.expand-panel {
+  border-top: 1px solid var(--line);
+  background: #fbfcff;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s ease, padding 0.28s ease;
+  padding: 0 22px;
+}
+.expand-panel.open {
+  max-height: 500px;
+  padding: 20px 22px 24px;
+}
+
+/* ============================================================
+   Scenario Toggles
+   ============================================================ */
+.scenario-toggle {
+  position: relative;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease;
+  text-align: left;
+}
+.scenario-toggle:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+}
+.scenario-toggle.active {
+  background: #eef8f6;
+  border-color: #b9ead7;
+}
+.scenario-toggle .t-title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+  font-family: Inter, sans-serif;
+}
+.scenario-toggle .t-text {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: Inter, sans-serif;
+}
+
+/* ============================================================
+   Tooltip
+   ============================================================ */
+.tooltip-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.tooltip-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: help;
+  font-family: Inter, sans-serif;
+}
+.tooltip-body {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  width: 270px;
+  z-index: 30;
+  background: #11192b;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity 0.16s ease, visibility 0.16s ease, transform 0.16s ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: Inter, sans-serif;
+  line-height: 1.5;
+  pointer-events: none;
+}
+.tooltip-wrap:hover .tooltip-body {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Accordion / Details
+   ============================================================ */
+details {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+details + details { margin-top: 10px; }
+summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  color: var(--text);
+}
+summary::-webkit-details-marker { display: none; }
+details p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 14px;
+  font-family: Inter, sans-serif;
+}
+
+/* ============================================================
+   Comparison columns (with/without vaccine)
+   ============================================================ */
+.compare-col {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.compare-col h4 {
+  font-size: 17px;
+  margin-bottom: 14px;
+  font-family: "Source Serif 4", serif;
+}
+.kv-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+.kv-row:first-of-type { border-top: 0; padding-top: 0; }
+.kv-row .kv-label { font-size: 14px; font-weight: 600; font-family: Inter, sans-serif; }
+.kv-row .kv-val { font-size: 13px; color: var(--muted); font-family: Inter, sans-serif; text-align: right; }
+
+/* ============================================================
+   Print styles
+   ============================================================ */
+@media print {
+  .topbar, .no-print { display: none !important; }
+  .vf-card { box-shadow: none !important; border: 1px solid #ccc !important; }
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) {
+  .topbar { min-height: 64px; }
+  .btn { padding: 12px 16px; font-size: 14px; }
+}
