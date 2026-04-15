@@ -268,6 +268,7 @@ export default function VaccinesIndexPage() {
                 </div>
 
                 <div
+                  className="vf-vaccine-index-grid"
                   style={{
                     display: "grid",
                     gridTemplateColumns:

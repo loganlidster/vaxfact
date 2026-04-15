@@ -45,7 +45,7 @@ export default function SiteFooter() {
           }}
         >
           {/* Brand column */}
-          <div>
+          <div className="vf-footer-brand">
             <Link
               href="/"
               style={{
@@ -295,6 +295,23 @@ export default function SiteFooter() {
       <style>{`
         .footer-link:hover {
           color: #94a3b8 !important;
+        }
+        @media (max-width: 768px) {
+          .vf-footer-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 32px !important;
+          }
+          .vf-footer-brand {
+            grid-column: span 2;
+          }
+        }
+        @media (max-width: 480px) {
+          .vf-footer-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .vf-footer-brand {
+            grid-column: span 1;
+          }
         }
       `}</style>
     </footer>

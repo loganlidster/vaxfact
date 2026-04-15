@@ -249,6 +249,36 @@ export default function VaccineDetailStatic({ vaccine, score, relatedVaccines }:
         paddingBottom: 80,
       }}
     >
+      <style>{`
+        .vf-hero-grid { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: start; }
+        .vf-body-grid { display: grid; grid-template-columns: 1fr 340px; gap: 32px; align-items: start; }
+        .vf-effectiveness-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+        .vf-disease-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 20px; }
+        .vf-procon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .vf-related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .vf-schedule-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .vf-stats-row { display: flex; gap: 16px; flex-wrap: wrap; }
+        .vf-stat-card { background: #0d1526; border: 1px solid #1e293b; border-radius: 10px; padding: 12px 16px; min-width: 140px; flex: 1 1 140px; }
+        .vf-sidebar { position: sticky; top: 80px; }
+        .vf-ae-card { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .vf-policy-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+        @media (max-width: 900px) {
+          .vf-hero-grid { grid-template-columns: 1fr !important; }
+          .vf-body-grid { grid-template-columns: 1fr !important; }
+          .vf-sidebar { position: static !important; }
+        }
+        @media (max-width: 768px) {
+          .vf-effectiveness-grid { grid-template-columns: 1fr !important; }
+          .vf-disease-grid { grid-template-columns: 1fr !important; }
+          .vf-procon-grid { grid-template-columns: 1fr !important; }
+          .vf-related-grid { grid-template-columns: 1fr !important; }
+          .vf-schedule-info-grid { grid-template-columns: 1fr !important; }
+          .vf-stats-row { gap: 10px !important; }
+          .vf-stat-card { min-width: 120px !important; }
+          .vf-ae-card { flex-direction: column !important; align-items: flex-start !important; }
+          .vf-policy-row { flex-direction: column !important; align-items: flex-start !important; gap: 6px !important; }
+        }
+      `}</style>
       {/* ── Hero ── */}
       <div
         style={{
@@ -447,11 +477,8 @@ export default function VaccineDetailStatic({ vaccine, score, relatedVaccines }:
           maxWidth: 1200,
           margin: "0 auto",
           padding: "48px 24px 0",
-          display: "grid",
-          gridTemplateColumns: "1fr 340px",
-          gap: 32,
-          alignItems: "start",
         }}
+        className="vf-body-grid"
       >
         {/* ── Main column ── */}
         <div>
@@ -540,14 +567,7 @@ export default function VaccineDetailStatic({ vaccine, score, relatedVaccines }:
               {vaccine.disease.description}
             </p>
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
-                gap: 16,
-                marginBottom: 20,
-              }}
-            >
+            <div className="vf-disease-grid">
               {[
                 {
                   label: "Transmission",
@@ -626,14 +646,7 @@ export default function VaccineDetailStatic({ vaccine, score, relatedVaccines }:
 
           {/* Vaccine Effectiveness */}
           <SectionCard title="🛡️ Vaccine Effectiveness" accent="#1e3a5f">
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: 16,
-                marginBottom: 20,
-              }}
-            >
+            <div className="vf-effectiveness-grid">
               {[
                 {
                   label: "Against Infection",
@@ -747,11 +760,9 @@ export default function VaccineDetailStatic({ vaccine, score, relatedVaccines }:
                         border: "1px solid #1e293b",
                         borderRadius: 8,
                         padding: "12px 16px",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "center",
                         gap: 12,
                       }}
+                      className="vf-ae-card"
                     >
                       <div>
                         <div
@@ -847,7 +858,7 @@ export default function VaccineDetailStatic({ vaccine, score, relatedVaccines }:
 
           {/* Vaccine Schedule */}
           <SectionCard title="📅 Vaccine Schedule" accent="#1e293b">
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
+            <div className="vf-schedule-info-grid">
               <div>
                 <div
                   style={{
@@ -956,7 +967,7 @@ export default function VaccineDetailStatic({ vaccine, score, relatedVaccines }:
 
           {/* Pros & Cons */}
           <SectionCard title="⚖️ Benefits vs. Considerations" accent="#1e293b">
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+            <div className="vf-procon-grid">
               <div>
                 <h3
                   style={{
@@ -1082,7 +1093,7 @@ export default function VaccineDetailStatic({ vaccine, score, relatedVaccines }:
               <p style={{ color: "#64748b", fontSize: 13, marginBottom: 16 }}>
                 Vaccines often given together or covering related diseases.
               </p>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
+              <div className="vf-related-grid">
                 {relatedVaccines.map((v) => (
                   <Link
                     key={v.id}
@@ -1198,7 +1209,7 @@ export default function VaccineDetailStatic({ vaccine, score, relatedVaccines }:
         </div>
 
         {/* ── Sidebar ── */}
-        <div style={{ position: "sticky", top: 80 }}>
+        <div className="vf-sidebar">
           {/* Brand names */}
           <div
             style={{
