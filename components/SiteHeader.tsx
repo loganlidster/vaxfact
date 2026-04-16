@@ -96,8 +96,10 @@ export default function SiteHeader({
     <>
       <header
         style={{
-          background: "#0f172a",
-          borderBottom: "1px solid #1e293b",
+          background: "rgba(247,248,251,0.95)",
+          backdropFilter: "saturate(180%) blur(12px)",
+          WebkitBackdropFilter: "saturate(180%) blur(12px)",
+          borderBottom: "1px solid var(--line)",
           position: "sticky",
           top: 0,
           zIndex: 100,
@@ -123,7 +125,6 @@ export default function SiteHeader({
               fontFamily: "var(--font-serif)",
               fontSize: 20,
               fontWeight: 700,
-              color: "#f8fafc",
               textDecoration: "none",
               letterSpacing: "-0.02em",
               display: "flex",
@@ -134,7 +135,7 @@ export default function SiteHeader({
           >
             <span
               style={{
-                background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
+                background: "linear-gradient(135deg, #2346a0, #8b5cf6)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -142,7 +143,7 @@ export default function SiteHeader({
             >
               VaxFact
             </span>
-            <span style={{ color: "#334155", fontWeight: 400, fontSize: 14 }}>
+            <span style={{ color: "var(--muted)", fontWeight: 400, fontSize: 14 }}>
               .net
             </span>
           </Link>
@@ -154,6 +155,8 @@ export default function SiteHeader({
               <Link href="/vaccines" className="vf-nav-link">
                 Vaccines ▾
               </Link>
+              {/* Invisible hover bridge: fills gap between link and dropdown */}
+              <div className="vf-dropdown-bridge" />
               <div className="vf-nav-dropdown">
                 <div
                   style={{
@@ -172,10 +175,10 @@ export default function SiteHeader({
                           fontWeight: 600,
                           textTransform: "uppercase",
                           letterSpacing: "0.08em",
-                          color: "#475569",
+                          color: "var(--muted)",
                           marginBottom: 10,
                           paddingBottom: 6,
-                          borderBottom: "1px solid #1e293b",
+                          borderBottom: "1px solid var(--line)",
                         }}
                       >
                         {group.category}
@@ -202,22 +205,23 @@ export default function SiteHeader({
                 </div>
                 <div
                   style={{
-                    borderTop: "1px solid #1e293b",
+                    borderTop: "1px solid var(--line)",
                     padding: "12px 28px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
+                    background: "var(--surface-2)",
                   }}
                 >
-                  <span style={{ color: "#475569", fontSize: 13 }}>
+                  <span style={{ color: "var(--muted)", fontSize: 13 }}>
                     20 vaccines with full evidence profiles
                   </span>
                   <Link
                     href="/vaccines"
                     style={{
-                      color: "#3b82f6",
+                      color: "var(--primary)",
                       fontSize: 13,
-                      fontWeight: 500,
+                      fontWeight: 600,
                       textDecoration: "none",
                     }}
                   >
@@ -262,10 +266,10 @@ export default function SiteHeader({
                   alignItems: "center",
                   gap: 6,
                   background: scenarioActive
-                    ? "rgba(59,130,246,0.15)"
-                    : "rgba(255,255,255,0.05)",
-                  border: `1px solid ${scenarioActive ? "#3b82f6" : "#1e293b"}`,
-                  color: scenarioActive ? "#93c5fd" : "#94a3b8",
+                    ? "var(--primary-soft)"
+                    : "var(--surface-2)",
+                  border: `1px solid ${scenarioActive ? "var(--primary)" : "var(--line)"}`,
+                  color: scenarioActive ? "var(--primary)" : "var(--muted)",
                   padding: "7px 14px",
                   borderRadius: 8,
                   fontSize: 13,
@@ -282,7 +286,7 @@ export default function SiteHeader({
                       width: 7,
                       height: 7,
                       borderRadius: "50%",
-                      background: "#3b82f6",
+                      background: "var(--primary)",
                       display: "inline-block",
                     }}
                   />
@@ -293,9 +297,9 @@ export default function SiteHeader({
             {selectedCount > 0 && (
               <span
                 style={{
-                  background: "#1e3a5f",
-                  border: "1px solid #1e4a8a",
-                  color: "#60a5fa",
+                  background: "var(--primary-soft)",
+                  border: "1px solid var(--line-strong)",
+                  color: "var(--primary)",
                   fontSize: 12,
                   fontWeight: 700,
                   padding: "5px 10px",
@@ -310,7 +314,7 @@ export default function SiteHeader({
               <Link
                 href="/"
                 style={{
-                  background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
+                  background: "linear-gradient(135deg, #2346a0, #8b5cf6)",
                   color: "#fff",
                   padding: "8px 16px",
                   borderRadius: 8,
@@ -332,9 +336,9 @@ export default function SiteHeader({
             aria-label="Toggle menu"
             style={{
               background: "none",
-              border: "1px solid #1e293b",
+              border: "1px solid var(--line)",
               borderRadius: 8,
-              color: "#94a3b8",
+              color: "var(--muted)",
               padding: "8px 10px",
               cursor: "pointer",
               display: "none",
@@ -349,7 +353,7 @@ export default function SiteHeader({
                 display: "block",
                 width: 20,
                 height: 2,
-                background: "#94a3b8",
+                background: "var(--muted)",
                 borderRadius: 2,
                 transition: "all 0.2s",
                 transform: mobileOpen ? "rotate(45deg) translate(5px, 5px)" : "none",
@@ -360,7 +364,7 @@ export default function SiteHeader({
                 display: "block",
                 width: 20,
                 height: 2,
-                background: "#94a3b8",
+                background: "var(--muted)",
                 borderRadius: 2,
                 opacity: mobileOpen ? 0 : 1,
                 transition: "all 0.2s",
@@ -371,7 +375,7 @@ export default function SiteHeader({
                 display: "block",
                 width: 20,
                 height: 2,
-                background: "#94a3b8",
+                background: "var(--muted)",
                 borderRadius: 2,
                 transition: "all 0.2s",
                 transform: mobileOpen ? "rotate(-45deg) translate(5px, -5px)" : "none",
@@ -384,8 +388,8 @@ export default function SiteHeader({
         {mobileOpen && (
           <div
             style={{
-              background: "#0a1020",
-              borderTop: "1px solid #1e293b",
+              background: "var(--surface)",
+              borderTop: "1px solid var(--line)",
               padding: "16px 20px 24px",
               display: "flex",
               flexDirection: "column",
@@ -401,18 +405,18 @@ export default function SiteHeader({
                 alignItems: "center",
                 background: "none",
                 border: "none",
-                color: "#e2e8f0",
+                color: "var(--text)",
                 fontSize: 15,
                 fontWeight: 600,
                 padding: "12px 0",
                 cursor: "pointer",
                 fontFamily: "inherit",
-                borderBottom: "1px solid #1e293b",
+                borderBottom: "1px solid var(--line)",
                 width: "100%",
               }}
             >
               <span>💉 Vaccines</span>
-              <span style={{ color: "#64748b", fontSize: 12 }}>
+              <span style={{ color: "var(--muted)", fontSize: 12 }}>
                 {mobileVaccinesOpen ? "▲" : "▼"}
               </span>
             </button>
@@ -424,7 +428,7 @@ export default function SiteHeader({
                   gridTemplateColumns: "1fr 1fr",
                   gap: 2,
                   padding: "8px 0 12px",
-                  borderBottom: "1px solid #1e293b",
+                  borderBottom: "1px solid var(--line)",
                 }}
               >
                 {ALL_VACCINES_FLAT.map((v) => (
@@ -433,7 +437,7 @@ export default function SiteHeader({
                     href={`/vaccines/${v.id}`}
                     onClick={() => setMobileOpen(false)}
                     style={{
-                      color: "#94a3b8",
+                      color: "var(--muted)",
                       textDecoration: "none",
                       fontSize: 13,
                       padding: "6px 8px",
@@ -447,7 +451,7 @@ export default function SiteHeader({
                   href="/vaccines"
                   onClick={() => setMobileOpen(false)}
                   style={{
-                    color: "#3b82f6",
+                    color: "var(--primary)",
                     textDecoration: "none",
                     fontSize: 13,
                     padding: "8px 8px",
@@ -473,14 +477,14 @@ export default function SiteHeader({
                     display: "block",
                     background: "none",
                     border: "none",
-                    color: currentView === link.view ? "#93c5fd" : "#94a3b8",
+                    color: currentView === link.view ? "var(--primary)" : "var(--muted)",
                     fontSize: 15,
                     fontWeight: 500,
                     padding: "12px 0",
                     cursor: "pointer",
                     fontFamily: "inherit",
                     textAlign: "left",
-                    borderBottom: "1px solid #1e293b",
+                    borderBottom: "1px solid var(--line)",
                     width: "100%",
                   }}
                 >
@@ -493,12 +497,12 @@ export default function SiteHeader({
                   onClick={() => setMobileOpen(false)}
                   style={{
                     display: "block",
-                    color: pathname === link.href ? "#93c5fd" : "#94a3b8",
+                    color: pathname === link.href ? "var(--primary)" : "var(--muted)",
                     textDecoration: "none",
                     fontSize: 15,
                     fontWeight: 500,
                     padding: "12px 0",
-                    borderBottom: "1px solid #1e293b",
+                    borderBottom: "1px solid var(--line)",
                   }}
                 >
                   {link.label}
@@ -516,11 +520,9 @@ export default function SiteHeader({
                   }}
                   style={{
                     flex: 1,
-                    background: scenarioActive
-                      ? "rgba(59,130,246,0.15)"
-                      : "#1e293b",
-                    border: `1px solid ${scenarioActive ? "#3b82f6" : "#334155"}`,
-                    color: scenarioActive ? "#93c5fd" : "#94a3b8",
+                    background: scenarioActive ? "var(--primary-soft)" : "var(--surface-2)",
+                    border: `1px solid ${scenarioActive ? "var(--primary)" : "var(--line)"}`,
+                    color: scenarioActive ? "var(--primary)" : "var(--muted)",
                     padding: "10px 0",
                     borderRadius: 8,
                     fontSize: 13,
@@ -538,7 +540,7 @@ export default function SiteHeader({
                   onClick={() => setMobileOpen(false)}
                   style={{
                     flex: 1,
-                    background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
+                    background: "linear-gradient(135deg, #2346a0, #8b5cf6)",
                     color: "#fff",
                     padding: "10px 0",
                     borderRadius: 8,
@@ -579,7 +581,7 @@ export default function SiteHeader({
 
         /* Nav links */
         .vf-nav-link {
-          color: #64748b;
+          color: var(--muted);
           text-decoration: none;
           font-size: 13.5px;
           font-weight: 500;
@@ -590,12 +592,12 @@ export default function SiteHeader({
           display: inline-block;
         }
         .vf-nav-link:hover {
-          color: #f1f5f9;
-          background: rgba(255,255,255,0.05);
+          color: var(--text);
+          background: var(--surface-2);
         }
         .vf-nav-active {
-          color: #93c5fd !important;
-          background: rgba(59,130,246,0.1) !important;
+          color: var(--primary) !important;
+          background: var(--primary-soft) !important;
         }
         .vf-nav-btn {
           background: none;
@@ -604,31 +606,51 @@ export default function SiteHeader({
           font-family: inherit;
         }
 
-        /* Dropdown */
+        /* Dropdown wrapper */
         .vf-nav-dropdown-wrapper {
           position: relative;
           display: flex;
           align-items: center;
         }
+
+        /* Invisible bridge: covers the 8px gap between nav link and dropdown panel
+           so the dropdown stays open as the mouse moves from link → dropdown */
+        .vf-dropdown-bridge {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          height: 12px; /* matches top offset of dropdown */
+          background: transparent;
+          z-index: 199;
+        }
+
+        /* Dropdown panel */
         .vf-nav-dropdown {
           display: none;
           position: absolute;
           top: calc(100% + 8px);
           left: 0;
-          background: #0f172a;
-          border: 1px solid #1e293b;
+          background: var(--surface);
+          border: 1px solid var(--line);
           border-radius: 12px;
-          box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+          box-shadow: 0 20px 60px rgba(23,32,51,0.12);
           z-index: 200;
           overflow: hidden;
         }
+
+        /* Show dropdown and bridge on hover of wrapper OR dropdown itself */
         .vf-nav-dropdown-wrapper:hover .vf-nav-dropdown,
+        .vf-nav-dropdown-wrapper:hover .vf-dropdown-bridge,
+        .vf-nav-dropdown:hover,
         .vf-nav-dropdown-wrapper:focus-within .vf-nav-dropdown {
           display: block;
         }
+
         .vf-dropdown-link {
           display: block;
-          color: #64748b;
+          color: var(--muted);
           text-decoration: none;
           font-size: 13px;
           padding: 5px 8px;
@@ -636,8 +658,8 @@ export default function SiteHeader({
           transition: all 0.12s;
         }
         .vf-dropdown-link:hover {
-          color: #f1f5f9;
-          background: rgba(59,130,246,0.1);
+          color: var(--primary);
+          background: var(--primary-soft);
         }
       `}</style>
     </>

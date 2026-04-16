@@ -2694,14 +2694,28 @@ export function computeScores(vaccine: VaccineData, scenario: ScenarioInputs): S
   const vaccineBenefit = Math.min(100, Math.round(effectivenessWeighted * diseaseConsequence));
 
   // ── 4. VACCINE HARM SCORE ───────────────────────────────
-  // VaccineHarm = sum(probability × severity) + uncertainty penalty
+  // Tiered calculation: mild/common AEs contribute very little (they are expected,
+  // transient, and do not change the risk-benefit calculus meaningfully).
+  // Only rare-serious AEs carry significant weight.
+  //
+  // Type multipliers:
+  //   "mild"             → 0.01  (soreness, fever — expected, transient)
+  //   "moderate"         → 0.5   (moderate reactions worth noting)
+  //   "rare-serious"     → 50    (anaphylaxis, serious neurological events)
+  //   "rare-theoretical" → 2     (theoretical/unproven signals)
+  //   default/unknown    → 5
   const adverseHarm = vaccine.adverseEvents.reduce((sum, ae) => {
-    const probNormalized = ae.probability / 100000; // convert per-100k to probability
-    return sum + (probNormalized * ae.severityWeight);
+    const probNormalized = ae.probability / 100000;
+    let typeMultiplier = 5;
+    if (ae.type === "mild") typeMultiplier = 0.01;
+    else if (ae.type === "moderate") typeMultiplier = 0.5;
+    else if (ae.type === "rare-serious") typeMultiplier = 50;
+    else if (ae.type === "rare-theoretical") typeMultiplier = 2;
+    return sum + probNormalized * ae.severityWeight * typeMultiplier;
   }, 0);
 
-  const uncertaintyPenalty = (100 - vaccine.scores.evidenceConfidence) * 0.1;
-  const vaccineHarm = Math.min(100, Math.round((adverseHarm * 500 + uncertaintyPenalty)));
+  const uncertaintyPenalty = (100 - vaccine.scores.evidenceConfidence) * 0.05;
+  const vaccineHarm = Math.min(100, Math.round(adverseHarm * 200 + uncertaintyPenalty));
 
   // ── 5. EVIDENCE CONFIDENCE ─────────────────────────────
   const evidenceConfidence = vaccine.scores.evidenceConfidence;
@@ -2709,8 +2723,18 @@ export function computeScores(vaccine: VaccineData, scenario: ScenarioInputs): S
   // ── 6. NET BENEFIT ──────────────────────────────────────
   // NetBenefit = (ExposureRisk × DiseaseConsequence × VaccineBenefit) - VaccineHarm
   // Normalized to 0–100
-  const rawNetBenefit = (exposureRisk * diseaseConsequence * vaccineBenefit) / 10000 - vaccineHarm;
-  const netBenefit = Math.min(100, Math.max(0, Math.round(rawNetBenefit + 50)));
+  // A balanced formula where well-proven vaccines score appropriately:
+  //   protectionValue  = (diseaseConsequence × vaccineBenefit) / 100  [0-100]
+  //   exposureWeighted = protectionValue × (0.3 + exposureRisk/100 × 0.7)
+  //                      (min 30% weight even at very low exposure)
+  //   harmPenalty      = vaccineHarm / 5  (max 20pt deduction)
+  //   evidenceBonus    = (confidence - 50) × 0.1  (up to +5 for high-confidence)
+  const protectionValue = (diseaseConsequence * vaccineBenefit) / 100;
+  const exposureWeighted = protectionValue * (0.3 + (exposureRisk / 100) * 0.7);
+  const harmPenalty = vaccineHarm / 5;
+  const evidenceBonus = (evidenceConfidence - 50) * 0.1;
+  const rawNetBenefit = exposureWeighted - harmPenalty + evidenceBonus;
+  const netBenefit = Math.min(100, Math.max(0, Math.round(rawNetBenefit)));
 
   // ── 7. RECOMMENDATION ──────────────────────────────────
   const recommendation: ScoreResult["recommendation"] =
