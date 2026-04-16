@@ -2702,15 +2702,15 @@ export function computeScores(vaccine: VaccineData, scenario: ScenarioInputs): S
   //   "mild"             → 0.01  (soreness, fever — expected, transient)
   //   "moderate"         → 0.5   (moderate reactions worth noting)
   //   "rare-serious"     → 50    (anaphylaxis, serious neurological events)
-  //   "rare-theoretical" → 2     (theoretical/unproven signals)
+  //   "serious"          → 10    (confirmed serious but not rare)
   //   default/unknown    → 5
   const adverseHarm = vaccine.adverseEvents.reduce((sum, ae) => {
     const probNormalized = ae.probability / 100000;
     let typeMultiplier = 5;
     if (ae.type === "mild") typeMultiplier = 0.01;
     else if (ae.type === "moderate") typeMultiplier = 0.5;
+    else if (ae.type === "serious") typeMultiplier = 10;
     else if (ae.type === "rare-serious") typeMultiplier = 50;
-    else if (ae.type === "rare-theoretical") typeMultiplier = 2;
     return sum + probNormalized * ae.severityWeight * typeMultiplier;
   }, 0);
 
